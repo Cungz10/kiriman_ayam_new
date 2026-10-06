@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-canvas text-ink font-sans antialiased min-h-screen selection:bg-amber/30;
+  }
+}
+
+@layer components {
+  /* --- Glassmorphism Surfaces --- */
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/80 rounded-neu shadow-glass;
+  }
+
+  .glass-card-subtle {
+    @apply bg-white/50 backdrop-blur-md border border-white/60 rounded-neu shadow-sm;
+  }
+
+  .glass-header {
+    @apply bg-white/65 backdrop-blur-2xl border-b border-white/60 shadow-[0_4px_20px_rgba(163,177,198,0.2)];
+  }
+
+  .glass-hud {
+    @apply bg-white/40 backdrop-blur-xl border border-white/80 rounded-neu shadow-glass relative overflow-hidden;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
+  }
+
+  .glass-pill {
+    @apply bg-white/60 backdrop-blur-md border border-white/70 px-3 py-1 rounded-full text-xs font-medium text-ink shadow-sm;
+  }
+
+  /* --- Neumorphism Tactile Cards & Containers --- */
+  .neu-card {
+    @apply bg-canvas rounded-neu shadow-neu border border-white/60;
+  }
+
+  .neu-card-sm {
+    @apply bg-canvas rounded-neu-sm shadow-neu-sm border border-white/60;
+  }
+
+  .neu-inset {
+    @apply bg-canvas-dark/60 rounded-neu-sm shadow-neu-inset border border-white/30;
+  }
+
+  .neu-well {
+    @apply bg-canvas-dark/50 rounded-neu shadow-neu-inset border border-white/40;
+  }
+
+  /* --- Neumorphic Tactile Buttons --- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-neu-sm font-semibold
+      transition-all duration-150 active:scale-[0.98] disabled:opacity-45 disabled:pointer-events-none cursor-pointer;
+  }
+
+  .neu-btn {
+    @apply btn bg-gradient-to-br from-white/90 via-canvas to-canvas-dark text-ink
+      shadow-neu-sm border border-white/70 hover:from-white hover:to-canvas
+      active:shadow-neu-inset-sm active:from-canvas-dark active:to-canvas-dark;
+  }
+
+  .btn-amber {
+    @apply btn bg-gradient-to-r from-amber to-amber-deep text-white
+      shadow-[4px_4px_12px_rgba(217,119,6,0.35),-3px_-3px_8px_rgba(255,255,255,0.8)]
+      border border-amber-300/40 hover:brightness-105
+      active:shadow-[inset_2px_2px_5px_rgba(180,83,9,0.6),inset_-2px_-2px_5px_rgba(253,230,138,0.3)]
+      active:scale-[0.98];
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-br from-slate-800 to-slate-950 text-white
+      shadow-[5px_5px_14px_rgba(15,23,42,0.35),-3px_-3px_8px_rgba(255,255,255,0.85)]
+      border border-slate-700/50 hover:brightness-110
+      active:shadow-[inset_2px_2px_5px_rgba(0,0,0,0.7),inset_-2px_-2px_5px_rgba(255,255,255,0.2)]
+      active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply btn bg-white/40 text-ink backdrop-blur-sm border border-white/70
+      shadow-neu-xs hover:bg-white/70 active:shadow-neu-inset-sm;
+  }
+
+  .btn-danger {
+    @apply btn bg-rose-50/60 text-rust border border-rose-200/60 backdrop-blur-sm
+      shadow-neu-xs hover:bg-rose-100/80 active:shadow-neu-inset-sm;
+  }
+
+  /* --- Keypad Tactile Buttons (Tombol Cepat) --- */
+  .neu-keypad-btn {
+    @apply font-mono font-bold rounded-xl py-3.5 text-sm transition-all duration-100
+      flex items-center justify-center cursor-pointer select-none
+      bg-gradient-to-br from-white via-canvas-light to-canvas-dark text-ink
+      shadow-[4px_4px_9px_rgba(163,177,198,0.45),-4px_-4px_9px_rgba(255,255,255,0.95)]
+      border border-white/80 hover:text-amber-deep hover:border-amber-300/60
+      active:shadow-[inset_3px_3px_6px_rgba(163,177,198,0.5),inset_-3px_-3px_6px_rgba(255,255,255,0.9)]
+      active:scale-95 active:text-amber-deep;
+  }
+
+  /* --- Inputs & Form Fields --- */
+  .field-label {
+    @apply text-xs font-bold uppercase tracking-wider text-muted mb-2 block;
+  }
+
+  .field-input {
+    @apply w-full rounded-neu-sm bg-canvas-dark/40 backdrop-blur-md px-4 py-3.5 text-ink
+      placeholder:text-muted/60 border border-white/50 shadow-neu-inset
+      focus:outline-none focus:ring-2 focus:ring-amber/50 focus:border-amber transition-all;
+  }
+
+  .stub {
+    @apply font-mono text-sm bg-white/60 text-ink rounded-lg px-2.5 py-1.5 flex items-center gap-2
+      border border-white/70 shadow-neu-xs;
+  }
+}
+
+/* Custom Range Slider styling for Neumorphism */
+input[type="range"] {
+  -webkit-appearance: none;
+  background: transparent;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 9999px;
+  background: #dfe5ee;
+  box-shadow: inset 2px 2px 5px rgba(163, 177, 198, 0.5), inset -2px -2px 5px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  cursor: pointer;
+  margin-top: -7px;
+  box-shadow: 2px 2px 6px rgba(217, 119, 6, 0.4), -2px -2px 6px rgba(255, 255, 255, 0.9);
+  border: 2px solid #ffffff;
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.15);
+}

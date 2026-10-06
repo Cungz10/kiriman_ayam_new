@@ -1,0 +1,8 @@
+{
+  "name": "Kiriman Ayam — Timbangan Sample",
+  "description": "Aplikasi pencatatan timbangan sample kiriman ayam per pengiriman (PO) dengan kalkulasi otomatis statistik dan riwayat input.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
